@@ -235,11 +235,10 @@
 			\includegraphics[#1]{#3}
 		};
 	}, inner sep=0pt, minimum size=2.6cm] at ([xshift=- 0.35\textwidth]pic.south) (logo){};
-	\node[above, text width=0.7\textwidth, align=center] (title) at ([xshift=- 0.42\textwidth]pic.south east) {\color{white}{\huge \inserttitle} \par \insertsubtitle};
+	\node[above, text width=0.8\textwidth, align=center] (title) at ([xshift=- 0.42\textwidth]pic.south east) {\color{white}{\huge\fontbold \inserttitle} \par {\fontbold \insertsubtitle}};
 	\node[below=0.2cm, text width=0.7\textwidth, align=center] (author) at ([xshift=- 0.42\textwidth]pic.south east) { \insertauthor \par \insertinstitute  \par \insertdate};
 	\end{tikzpicture} 
 }
-
 
 %% provide command ribbon to use as sections
 % option: ribbon height, 2-color, 3- text
@@ -336,19 +335,44 @@
 	#3
 \end{tcolorbox}
 }
-
+\newtcolorbox[]{NoDefEnv}[1]{
+		enhanced,
+		grow to left by=-2.5cm,
+		boxsep=0mm,
+		sharp corners=all,
+		opacityfill=0,
+		coltext=BodyColor,
+		overlay={
+			\coordinate (X) at ([xshift=-1mm, yshift=-1.5mm]frame.north west);
+			\node[align=right, text=AlertColor, text width=3cm, anchor=north east] at (X) {\bfseries #1};
+			\draw[line width=0.5mm, color=AlertColor] (frame.north west) -- (frame.south west); 
+			}
+	}
 
 %% provide command to show main results
 % option - color , 2 - title, 3 - text
+\providecommand\docborder[3][couleurBleue]{%
+\begin{center}
+	\begin{tikzpicture}[remember picture, overlay]
+	\node[draw=#1, rectangle, minimum width=\paperwidth, fill=#1, minimum height=\paperheight, at=(current page.center)] (back) {  };
+	\node[ draw=white, rectangle, minimum width=0.95\paperwidth,fill=white, minimum height=0.95\paperheight, at=(current page.center), drop shadow={shadow blur steps=0.5}] (card) { };
+	\node[ draw=black, rectangle, minimum width=0.07\paperwidth,fill=black, text=white, minimum height=0.07\paperheight,  below=0.05\paperheight, anchor=west] at (back.north west) (title) { \fontbold{#2}};
+	\node[text, width = 0.95\paperwidth-0.4cm,text=black, below = -0.5cm, align=left, anchor =north west] at ([xshift=0.2cm, yshift=-1cm]card.north west) (res){#3};
+	%\node [scale=4, text=#1] at ([xshift=-0.1cm, yshift=-0.1cm]res.north west){\quotefont{``}}; 
+	%\node [scale=16, text=#1, anchor=north] at ([xshift=-0.7cm, yshift=1.6cm] res.south east)(endquote){\quotefont{''}}; 
+	\end{tikzpicture} 
+\end{center}
+}
+
 \providecommand\mainresult[3][yellow]{%
 \begin{center}
 	\begin{tikzpicture}[remember picture, overlay]
 	\node[draw=#1, rectangle, minimum width=\paperwidth, fill=#1, minimum height=\paperheight, at=(current page.center)] (back) {  };
 	\node[ draw=white, rectangle, minimum width=0.9\paperwidth,fill=white, minimum height=0.8\paperheight, at=(current page.center), drop shadow={shadow blur steps=0.5}] (card) { };
-	\node[ draw=black, rectangle, minimum width=0.07\paperwidth,fill=black, text=white, minimum height=0.07\paperheight,  below=0.17\paperheight, anchor=west] at (back.north west) (title) { \fontbold{#2}};
-	\node[text width = 0.8\paperwidth,text=black, below = 0.5cm, anchor =north west] at ([xshift=0.6cm, yshift=-1cm]card.north west) (res){#3};
-	\node [scale=4, text=#1] at ([xshift=-0.1cm, yshift=-0.1cm]res.north west){\quotefont{``}}; 
-	\node [scale=16, text=#1, anchor=north] at ([xshift=-0.7cm, yshift=1.6cm] res.south east)(endquote){\quotefont{''}}; 
+	\node[ draw=black, rectangle, minimum width=0.07\paperwidth,fill=black, text=white, minimum height=0.07\paperheight,  below=0.1\paperheight, anchor=west] at (back.north west) (title) { \fontbold{#2}};
+	\node[text width = 0.8\paperwidth,text=black, below = -0.5cm, anchor =north west] at ([xshift=0.6cm, yshift=-1cm]card.north west) (res){#3};
+	%\node [scale=4, text=#1] at ([xshift=-0.1cm, yshift=-0.1cm]res.north west){\quotefont{``}}; 
+	%\node [scale=16, text=#1, anchor=north] at ([xshift=-0.7cm, yshift=1.6cm] res.south east)(endquote){\quotefont{''}}; 
 	\end{tikzpicture} 
 \end{center}
 }

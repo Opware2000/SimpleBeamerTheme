@@ -67,7 +67,7 @@
 \setmonofont{Droid Sans Mono}
 % make math equations look beautiful
 %\usefonttheme[onlymath]{serif}
-\newfontfamily\fontbold{Montserrat ExtraBold}
+\newfontfamily\fontbold{Montserrat Bold}
 \newfontfamily\fontitalic{Montserrat Italic}
 \newfontfamily\quotefont{Minotaur}
 
@@ -81,7 +81,8 @@
 \setbeamertemplate{frametitle}
   {\begin{centering}\smallskip
    \insertframetitle\par
-   \smallskip\end{centering}}
+   \smallskip\end{centering}%
+  }
 
 \setbeamertemplate{itemize item}{$\bullet$}
 \setbeamertemplate{itemize subitem}{$\bullet$}
@@ -95,5 +96,12 @@
     \hfill%
 }
 
+\setbeamertemplate{section page}
+  {
+  \begingroup
+    %\vspace{2\baselineskip}
+    \ribbon{AlertColor}{\fontbold \Huge \color{Blanc} \insertsection }
+    \endgroup
+  }
 \mode
 <all>

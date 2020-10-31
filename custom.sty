@@ -1,0 +1,190 @@
+% --- Customisation Nicolas
+% Couleurs utilisées par la présentation
+\definecolor{couleurRouge}{HTML}{DA4D45}
+\definecolor{couleurVerte}{HTML}{388E3C}
+\definecolor{couleurBleue}{HTML}{03A9F4}
+
+
+%\RequirePackage[shortlabels]{enumitem}
+\RequirePackage{environ} % 
+
+\renewcommand{\titlepage}{
+	\makepictitle{img/coverimage}{img/logo}{Blanc}
+}
+
+% --- Définitions	
+
+\newenvironment{Nodefinitions}[1]{%
+	\begin{NoDefEnv}{#1}\begin{description}\color{couleurRouge}\bfseries
+	}
+	{\end{description}\end{NoDefEnv}}
+%     -- alias
+\newenvironment{Defs}{\begin{Nodefinitions}{Défs.}}{\end{Nodefinitions}}
+\newenvironment{Def}{\begin{Nodefinitions}{Déf.}}{\end{Nodefinitions}}
+\newenvironment{DefSmall}{\begin{Nodefinitions}{Déf.}}{\end{Nodefinitions}}
+\newenvironment{DefSmalls}{\begin{Nodefinitions}{Défs.}}{\end{Nodefinitions}}
+
+% --- 
+
+\newenvironment{conclusion}{
+  	\begin{tikzpicture}[remember picture, overlay]
+	\node[ draw=black, rectangle, minimum width=0.07\paperwidth,fill=black, text=white, minimum height=0.07\paperheight,  below=0.1\paperheight, anchor=west] at (back.north west) (title) { \fontbold{Conclusion}};
+	\end{tikzpicture} 
+  	\color{AlertColor}\noindent
+    }
+    {}
+
+% ---
+\newtcolorbox{remarque}[1][]{
+   breakable,
+  enhanced,
+  outer arc=0pt,
+  arc=0pt,
+  colframe=couleurBleue,
+  colback=couleurBleue!20,
+  attach boxed title to top left,
+  boxed title style={
+    colback=couleurBleue,
+    outer arc=0pt,
+    arc=0pt,
+    },
+  title=Remarque,
+  fonttitle=\sffamily,
+  colback=white,
+  rightrule=0pt,
+  toprule=0pt,
+  title=Remarque,
+  overlay unbroken and first={
+      \path
+        let
+        \p1=(title.north east),
+        \p2=(frame.north east)
+        in
+        node[anchor=west,font=\sffamily\bfseries,color=couleurBleue,text width=\x2-\x1] 
+        at (title.east) {#1};
+  }
+  }
+
+\newenvironment{Remarque}[1][]{\begin{remarque}[#1]}{\end{remarque}}
+% ---
+\newcommand{\trouer}[1]{{\pause{}\color{couleurRouge}\textbf{\underline{#1}}\pause{}}}
+\newcommand{\Trouer}[1]{\trouer{#1}}
+\newcommand{\imp}[1]{\textbf{\color{couleurRouge}#1}}
+% ---
+\newcommand{\verte}[1]{{\color{couleurVerte}\textbf{#1}}}
+\newcommand{\rouge}[1]{{\color{couleurRouge}{#1}}}
+% ---
+\newcommand{\up}[1]{\textsuperscript{#1}}
+% ---
+\newcommand{\probleme}[1]{\verte{Pb : }\emph{\verte{#1}}}
+\newcommand{\Probleme}[1]{\probleme{#1}}
+\newcommand{\problematique}[1]{\verte{Pbm : }\emph{\verte{#1}}}
+\newcommand{\Problematique}[1]{\problematique{#1}}
+% ---
+\newcommand{\Livre}[1]{\textbf{Livre p#1}}
+\newcommand{\docref}[1]{{{\textbf{Doc \ref{#1}}}}	}
+\newcommand{\docrefs}[2]{{{\textbf{Doc \ref{#1} et \ref{#2}}}}	}
+\newcommand{\livre}[1]{\textbf{livre p\,#1}	}
+\newcommand{\livres}[2]{\textbf{livre p\,#1 et #2}	}
+\newcommand{\livredoc}[2]{{{\textbf{doc #1 p\,#2}}}	}
+\newcommand{\livredocs}[3]{{{\textbf { doc #1 et #2 p\,#3}}}}
+% ---
+\newfontfamily\reponsefont{BradleyHandITCTT-Bold}
+\newenvironment{reponse}{
+\color{couleurBleue}\bfseries
+\fontsize{16pt}{18pt}\selectfont }
+{}
+% ---
+\RequirePackage[figurename=Doc.]{caption}
+\RequirePackage{anyfontsize}
+%\newenvironment{Document}[2]{\begin{figure}\caption{#1}\label{#2}}{\end{figure}}
+\renewcommand{\figurename}{Doc.}
+\NewEnviron{Document}[2]{%
+  \docborder[couleurBleue]{Document}{%
+  	\fontsize{14}{16}\selectfont
+	 \BODY
+     \begin{figure}\caption{#1}\label{#2}\end{figure}%
+  }%
+}
+% ---
+\newcommand{\fleche}{$\rightarrow$}
+\renewcommand{\url}[1]{ \href{#1}{#1}}
+
+% ---
+\newenvironment{question}[1][]{\begin{itemize}}{\end{itemize}}
+% ---
+\newcommand{\source}[1]{
+  \begin{flushright}\vspace{-0.5em}{\tiny \textbf{source} : \emph{#1}}\end{flushright}}
+\newcommand{\Belinsec}[1][]{\source{Belin 2° 2019 #1}}
+\newcommand{\Bordassec}[1][]{\source{Bordas 2° 2019 #1}}
+\newcommand{\Livrescosec}[1][]{\source{Livre scolaire 2° 2019 #1}}
+\newcommand{\Livrescoprem}[1][]{\source{Livre scolaire 1°ES 2019 #1}}
+\newcommand{\Bordasspeprem}[1][]{\footnotesize{Bordas 1°Spé 2019 #1}}
+\newcommand{\Belinspeprem}[1][]{\footnotesize{Belin 1°Spé 2019 #1}}
+\newcommand{\Livrescoterm}[1][]{\footnotesize{Livre scolaire Tle 2020 #1}}
+% --
+\newcommand{\lienweb}[2][]{\begin{center}\textbf{#1} : \\ \url{#2} \end{center}}
+% ---
+\newenvironment{Gauche}[1][.49\textwidth]{
+  \begin{minipage}{#1}
+}{\end{minipage}}
+\newenvironment{Droite}[1][.49\textwidth]{
+  \begin{minipage}{#1}
+}{\end{minipage}}
+
+% ---
+% Rédiger
+\newcommand{\redige}{\faIcon{pen-alt}\,}
+% TP
+\newcommand{\tp}[1]{\begin{flushright}TP n°#1\end{flushright}}
+% Compte rendu
+\newenvironment{ImportantEnv}[2][]{%
+   \begin{mdframed}[%
+      backgroundcolor={gray!15}, hidealllines=true,
+      skipabove=0.7\baselineskip, skipbelow=0.7\baselineskip,
+      splitbottomskip=2pt, splittopskip=4pt, #1]%
+   \makebox[0pt]{% ignore the withd of !
+      \smash{% ignor the height of !
+         \fontsize{24pt}{24pt}\selectfont% make the ! bigger
+         \hspace*{-19pt}% move ! to the left
+         \raisebox{-2pt}{% move ! up a little
+            {\color{couleurRouge!}\bfseries #2}% type the bold red !
+         }%
+      }%
+   }%
+}{\end{mdframed}}
+\newcommand{\CompteRendu}[1]{
+	\begin{ImportantEnv}{\faIcon{pen-nib}}\textbf{COMPTE RENDU}\\ #1 \end{ImportantEnv}
+}
+
+%--
+\newcommand{\competence}[2][]{\textbf{\small #2} #1}
+% --
+\newcommand{\circled}[2][]{%
+  \tikz[baseline=(char.base)]{%
+    \node[shape = circle, draw, inner sep = 1pt]
+    (char) {\phantom{\footnotesize\ifblank{#1}{#2}{#1}}};%
+    \node at (char.center) {\makebox[0pt][c]{\footnotesize#2}};}}
+\robustify{\circled}
+
+\newcommand{\Circled}[2][]{%
+  \tikz[baseline=(char.base)]{%
+    \node[shape = circle, draw, fill=black,  inner sep = 1pt]
+    (char) {\phantom{\footnotesize\ifblank{#1}{#2}{#1}}};%
+    \node at (char.center) {\makebox[0pt][c]{\footnotesize\color{white}#2}};}}
+\robustify{\Circled}
+
+\newcommand{\NumRond}[1]{%
+ \circled[00]{#1}
+ }
+\robustify{\NumRond}
+\newcommand{\NumRondNoir}[1]{%
+ \Circled[00]{#1}
+ }
+\robustify{\NumRond}
+% --
+\newcommand{\oeuf}{\oe{}uf}
+\newcommand{\coeur}{c\oe{}ur}
+
+\newcommand{\titresuite}[1]{#1}
+\newcommand{\tp}[1]{\begin{flushright}TP #1\end{flushright}}

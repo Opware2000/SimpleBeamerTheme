@@ -13,7 +13,7 @@
 %\RequirePackage{graphicx}
 \RequirePackage{pgfplots}
 % for fonts
-\RequirePackage[quiet]{fontspec}
+\RequirePackage[]{fontspec}
 % for table
 \RequirePackage{tabularx}
 \RequirePackage{booktabs}
@@ -35,7 +35,7 @@
     \PassOptionsToPackage{style=#1}{beamerinnerthemesimple}
     \PassOptionsToPackage{style=#1}{beamerouterthemesimple}
 }
-\ExecuteOptionsBeamer{style=light}
+\ExecuteOptionsBeamer{style=none}
 \ProcessOptionsBeamer
 
 % Settings
@@ -44,5 +44,23 @@
 \useoutertheme{simple}
 \usecolortheme{simple}
 
-
+% Color palette 
+\definecolor{AlertColor}{HTML}{DA4D45}
+\definecolor{MyTeal}{HTML}{00796B}
+\definecolor{MyBlue}{HTML}{03A9F4}
+\definecolor{MyPink}{HTML}{E91E63}
+\definecolor{MyPurple}{HTML}{6A1B9A}
+\definecolor{MyLime}{HTML}{CCDB39}
+\definecolor{MyGreen}{HTML}{388E3C}
+\definecolor{SelectColor}{HTML}{F5F5F5}
+\definecolor{MyIndigo}{HTML}{3E50B4}
+\definecolor{MyOrange}{HTML}{FE9700}
+\definecolor{MyPeach}{HTML}{FECBBB}
+\definecolor{DarkBlue}{HTML}{0287D0}
+\definecolor{DarkGold}{HTML}{C69318}
+\definecolor{Blanc}{HTML}{FFFFFF}
+% ---
+% Customisation par Nicolas
+\include{custom.sty}
+% ---
 \mode<all>
