@@ -185,3 +185,56 @@
 \newcommand{\coeur}{c\oe{}ur}
 
 \newcommand{\titresuite}[1]{#1}
+
+
+\setbeamerfont{title}{size=\Large,%
+                      series=\bfseries}
+\setbeamerfont{author}{size=\small}
+\setbeamerfont{date}{size=\small}
+\setbeamerfont{section title}{size=\Large,%
+                              series=\bfseries}
+\setbeamerfont{block title}{size=\normalsize,%
+                            series=\bfseries}
+\setbeamerfont{block title alerted}{size=\normalsize,%
+                                    series=\bfseries}
+\setbeamerfont*{subtitle}{size=\large}
+\setbeamerfont{frametitle}{size=\large,%
+                           series=\bfseries}
+\setbeamerfont{caption}{size=\small}
+\setbeamerfont{caption name}{series=\bfseries}
+\setbeamerfont{description item}{series=\bfseries}
+\setbeamerfont{page number in head/foot}{size=\scriptsize}
+\setbeamerfont{bibliography entry author}{size=\normalsize,%
+                                          series=\normalfont}
+\setbeamerfont{bibliography entry title}{size=\normalsize,%
+                                         series=\bfseries}
+\setbeamerfont{bibliography entry location}{size=\normalsize,%
+                                            series=\normalfont}
+\setbeamerfont{bibliography entry note}{size=\small,%
+                                        series=\normalfont}
+\setbeamerfont{standout}{size=\Large,%
+                         series=\bfseries}
+						 
+\usepackage{chemfig}
+\usepackage[version=3]{mhchem}
+
+\usepackage[load-configurations = abbreviations]{siunitx}
+\DeclareSIUnit[number-unit-product = \,]
+\UA{UA}
+\sisetup{locale = FR,
+        detect-all,
+        math-rm=\mathsf,
+        text-rm=\sffamily,
+        quotient-mode=fraction,
+        input-product=*, 
+        list-final-separator = { \translate{et} },
+        list-pair-separator = { \translate{et} },
+        range-phrase = { \translate{à} },
+        separate-uncertainty = true,
+        group-minimum-digits=3
+        }
+\usepackage{numprint} % affichage des nombres avec babel --> correctement formatés
+\DeclareSIUnit\century{siècle}
+\DeclareSIUnit\year{an}
+\DeclareSIUnit\siecle{siècle}
+\DeclareSIUnit\an{an}
