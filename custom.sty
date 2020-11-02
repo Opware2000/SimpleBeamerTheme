@@ -99,13 +99,15 @@
 \RequirePackage{anyfontsize}
 %\newenvironment{Document}[2]{\begin{figure}\caption{#1}\label{#2}}{\end{figure}}
 \renewcommand{\figurename}{Doc.}
-\NewEnviron{Document}[2]{%
-  \docborder[couleurBleue]{Document}{%
-  	\fontsize{14}{16}\selectfont
-	 \BODY
-     \begin{figure}\caption{#1}\label{#2}\end{figure}%
-  }%
-}
+ \NewEnviron{Document}[2]{%
+   %\docborder[couleurBleue]{Document}%
+   \mainresult[MyBlue]{Document}{
+   	\fontsize{14}{16}\selectfont
+ 	 \BODY
+      \begin{figure}\caption{#1}\label{#2}\end{figure}%
+   }
+ }
+%\newenvironment{Document}[2]{\begin{figure}\caption{#1}\label{#2}}{\end{figure}}
 % ---
 \newcommand{\fleche}{$\rightarrow$}
 \renewcommand{\url}[1]{ \href{#1}{#1}}
